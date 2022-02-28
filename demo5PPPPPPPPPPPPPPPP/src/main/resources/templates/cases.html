@@ -446,14 +446,17 @@
   <div class="col-md-2">
     <div class="chart" >
       <div style="height: 112px"  class="col-md-12">
-        <div th:text="${'Confirmed cases:'+vkupnoSlucai}" class="badge bg-danger text-wrap  text-center" style="width: 100%; height: 100%; ">
-
+        <div th:text="${'Confirmed cases:'+vkupnoSlucai}" class="badge bg-info text-wrap  text-center" style="width: 100%; height: 100%; ">
         </div>
       </div>
-      <div style="background: deepskyblue; height: 112px"  class="col-md-12">
+      <div style="height: 112px"  class="col-md-12">
+        <div th:text="${'Deaths cases:'+vkupnoDeaths}" class="badge bg-danger text-wrap  text-center" style="width: 100%; height: 100%; ">
+        </div>
       </div>
-      <div style="background: yellow; height: 112px" class="col-md-12"></div>
-      <div style="background: darksalmon; height: 112px" class="col-md-12"></div>
+      <div style="height: 112px" class="col-md-12">
+        <div th:text="${'Active cases:'+vkupnoAktivni}" class="badge bg-primary text-wrap  text-center" style="width: 100%; height: 100%; ">
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-md-5">

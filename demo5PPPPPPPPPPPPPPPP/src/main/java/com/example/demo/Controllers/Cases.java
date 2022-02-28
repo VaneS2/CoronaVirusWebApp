@@ -79,7 +79,6 @@ public class Cases {
             model.addAttribute("vkupnoAktivni",data.getJSONObject(data.length()-1).getInt("Active"));
 
 
-
         }catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -151,6 +150,10 @@ public class Cases {
                     allCountries.add(new Country(s[0], day.getInt("Confirmed"), day.getInt("Deaths")));}
             }
 
+            model.addAttribute("vkupnoSlucai",data.getJSONObject(data.length()-1).getInt("Confirmed"));
+            model.addAttribute("vkupnoDeaths",data.getJSONObject(data.length()-1).getInt("Deaths"));
+            model.addAttribute("vkupnoAktivni",data.getJSONObject(data.length()-1).getInt("Active"));
+            
         }catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -160,6 +163,7 @@ public class Cases {
         } finally {
             connection.disconnect();
         }
+
 
         model.addAttribute("nastani", allCountries);
         return "cases.html";
