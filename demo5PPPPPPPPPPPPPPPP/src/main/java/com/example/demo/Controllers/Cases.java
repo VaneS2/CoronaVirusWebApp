@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.demo.Controllers;
 
 import com.example.demo.models.CoronaEvents;
 import com.example.demo.models.Country;
