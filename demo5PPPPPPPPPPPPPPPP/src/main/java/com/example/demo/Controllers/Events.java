@@ -39,7 +39,7 @@ public class Events {
         model.addAttribute("kokos","lala");
         System.out.println(newServiceInterface.najdi().size());
 
-        return "map.html";
+        return "index.html";
     }
 
 

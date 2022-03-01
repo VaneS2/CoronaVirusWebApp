@@ -76,7 +76,7 @@ public class Cases {
 
             model.addAttribute("vkupnoSlucai",data.getJSONObject(data.length()-1).getInt("Confirmed"));
             model.addAttribute("vkupnoDeaths",data.getJSONObject(data.length()-1).getInt("Deaths"));
-            model.addAttribute("vkupnoAktivni",data.getJSONObject(data.length()-1).getInt("Active"));
+
 
 
         }catch (MalformedURLException e) {
@@ -152,7 +152,7 @@ public class Cases {
 
             model.addAttribute("vkupnoSlucai",data.getJSONObject(data.length()-1).getInt("Confirmed"));
             model.addAttribute("vkupnoDeaths",data.getJSONObject(data.length()-1).getInt("Deaths"));
-            model.addAttribute("vkupnoRecovered",data.getJSONObject(data.length()-1).getInt("Active"));
+
 
 
         }catch (MalformedURLException e) {
