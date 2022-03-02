@@ -39,7 +39,7 @@ public class Events {
         model.addAttribute("kokos","lala");
         System.out.println(newServiceInterface.najdi().size());
 
-        return "index.html";
+        return "mapa.html";
     }
 
 
@@ -125,7 +125,7 @@ public class Events {
             System.out.println("Query did not run \n" + e.toString());
         }
 
-        return "map.html";
+        return "mapa.html";
     }
 
 
@@ -225,7 +225,7 @@ public class Events {
             System.out.println("Query did not run \n" + e.toString());
         }
 
-        return "map.html";
+        return "mapa.html";
 
 
     }
