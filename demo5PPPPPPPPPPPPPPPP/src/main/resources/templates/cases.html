@@ -205,10 +205,10 @@
 
 <div class="row">
   <div  class="col-md-12 text-center">
-    <p  style="width: 300px"> <h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1></p>
+    <p  style="width: 300px; font-family: Roboto"> <h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1></p>
     <form class=" text-center" th:method="GET" th:action="@{'/cases/country'}">
       <form class="example" action="action_page.php">
-        <select id="countryyyy" name="search" class="btn btn-outline-primary active rounded-pill text-center" style="background: white; color: black; height: 31px; font-size: 13px;">
+        <select id="countryyyy" name="search" class="btn btn-outline-primary active rounded-pill text-center" style="background: white; color: black; height: 31px; font-size: 13px; font-family:Roboto">
           <option value="MACEDONIA">Select Country</option>
           <option value="AFGHANISTAN">Afganistan</option>
           <option value="ALBANIA">Albania</option>
@@ -392,7 +392,7 @@
           <option value="ZAMBIA">Zambia</option>
           <option value="ZIMBABWE">Zimbabwe</option>
         </select>
-        <button style="height: 31px; font-size: 13px;" type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
+        <button style="height: 31px; font-size: 13px; font-family: Roboto" type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
       </form>
     </form>
   </div>
@@ -405,11 +405,11 @@
   </div>
   <div class="col-md-2">
     <div class="chart" >
-      <div style="height: 225px"  class="col-md-12">
+      <div style="height: 225px; font-family: Roboto"  class="col-md-12">
         <div th:text="${'Confirmed cases:'+vkupnoSlucai}" class="badge bg-warning text-wrap  text-center" style="width: 100%; height: 100%; font-size: 25px">
         </div>
       </div>
-      <div style="height: 225px"  class="col-md-12">
+      <div style="height: 225px;font-family: Roboto"  class="col-md-12">
         <div th:text="${'Deaths cases:'+vkupnoDeaths}" class="badge bg-danger text-wrap  text-center" style="width: 100%; height: 100%; font-size: 25px">
         </div>
       </div>
