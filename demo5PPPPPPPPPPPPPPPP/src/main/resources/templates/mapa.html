@@ -78,40 +78,33 @@
 <br>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
-  <div class="row my-custom-row ">
-    <div class="col-12 text-center text-uppercase">
+  <div class="row my-custom-row justify-content-center align-items-center ">
+    <div class="col-12 text-center text-uppercase ">
       <h2 STYLE="font-family: Roboto" ><b>COVID-19 NEWS AND LATEST UPDATES</b> </h2>
     </div>
-  </div>
 
-  <div >
-    <form   th:method="GET" th:action="@{'/search'}">
-<div class=" col-6" >
-      <div  id="date-picker-example" class=" col-6 md-form md-outline input-with-post-icon datepicker" inline="true">
-        <input placeholder="Select date" type="text" id="example" class=" form-control">
-        <script>
-          // Data Picker Initialization
-          $('.datepicker').datepicker({
-            inline: true
-          });
-        </script>
-      </div>
+<div class="col-md-1 col-sm-1   text-center justify-content-end text-uppercase ">
+    <div>
+      <input style="margin: auto" width="100px" type="text" value="2/22/2022" class="datepicker form-control" name="StartDate">
+      <script>
+        $('.datepicker').datepicker({
+
+
+        });
+
+      </script>
+
+
+  </div>
 </div>
 
-
-
-
+    <div   class="col-md-3  col-sm-3  offset-0">
       <form class="example" action="action_page.php">
-          <input class="col-md-6" type="text" placeholder="Country.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-
-</form>
-
-
-
+        <input style="height: 40px ; margin-top: 5px" type="text" class="rounded-pill" placeholder="Country.." name="search">
+        <button style=" margin-top:-9px"type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
+      </form>
     </div>
 
     <div class="col-12 text-center">
@@ -123,12 +116,16 @@
 
 
 
-
-
   </div>
+
+
+
+
+
+
 </div>
 
-<br>
+
 
 
 
