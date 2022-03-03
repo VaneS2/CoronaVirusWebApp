@@ -6,7 +6,6 @@
       background-color: orange;
       color: black;
 
-
     }
     #lala {text-align: center;
       margin-top:17.2rem;
@@ -20,7 +19,6 @@
       font-size: 110px;
       color: orange;
     }
-
 
   </style>
   <head>
@@ -45,15 +43,7 @@
         font-family: "Roboto";
       }
     </style>
-    <style>
-      #issMap {
-        height: 800px;
-        width: auto;
-        margin-right: auto;
-        margin-left: auto;
-        border: 3px solid black;
-      }
-    </style>
+
   </head>
 
 </head>
@@ -84,7 +74,6 @@
           <a class="nav-link" href="/global">Global</a>
         </li>
 
-
       </ul>
     </div>
   </div>
@@ -96,7 +85,7 @@
 <script th:inline="javascript">
   var myval = /*[[${nastani}]]*/
 
-          google.charts.load('current', {'packages':['corechart']});
+  google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
 
   var d=new Array()
@@ -182,7 +171,6 @@
     f[i+1]=[myval[i].datum + " ",myval[i].confirmed];
   }
 
-
   google.load("current",  {packages:["corechart"]});
   google.charts.setOnLoadCallback(drawChart2);
   function drawChart2() {
@@ -203,7 +191,6 @@
     drawChart2();
   });
 
-
 </script>
 
 <style>
@@ -218,10 +205,10 @@
 
 <div class="row">
   <div  class="col-md-12 text-center">
-    <p  style="width: 300px"> <h1   class=" text-center" th:text="${session.zemja}">MACEDONIA</h1></p>
+    <p  style="width: 300px"> <h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1></p>
     <form class=" text-center" th:method="GET" th:action="@{'/cases/country'}">
       <form class="example" action="action_page.php">
-        <select id="countryyyy" name="search">
+        <select id="countryyyy" name="search" class="btn btn-outline-primary active rounded-pill text-center" style="background: white; color: black; height: 31px; font-size: 13px;">
           <option value="MACEDONIA">Select Country</option>
           <option value="AFGHANISTAN">Afganistan</option>
           <option value="ALBANIA">Albania</option>
@@ -405,12 +392,12 @@
           <option value="ZAMBIA">Zambia</option>
           <option value="ZIMBABWE">Zimbabwe</option>
         </select>
-        <button style="height: 39px" type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
+        <button style="height: 31px; font-size: 13px;" type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
       </form>
     </form>
   </div>
   <div class="col-md-4 col-md-offset-4">
-    <hr />
+    <br/>
   </div>
   <div class="clearfix"></div>
   <div class="col-md-5">
@@ -434,9 +421,32 @@
   </div>
 </div>
 
+<br/>
+<br/>
+<br/>
 
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
 
-
+            </p>
+          </div>
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container -->
+</footer>
 
 
 
