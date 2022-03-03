@@ -510,9 +510,7 @@
         <button style="height: 31px; font-size: 13px; font-family: Roboto" type="submit" class="btn btn-outline-primary   active rounded-pill">Search</button>
       </form>
     </form>
-    <div class="text-center">Last updated:
-      <h3 th:text="${}"></h3>
-    </div>
+
   </div>
 </div>
 <div style="height: 45px"></div>
@@ -530,6 +528,10 @@
 
 <div class="container-fluid">
   <div style="font-family: Roboto" class="row my-custom-row justify-content-center align-items-center">
+
+    <div th:class="col-9" class="text-center">Last updated:
+      <h5 th:text="${datumm}"></h5>
+    </div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
       <h3>Confirmed cases </h3> <h1 th:text="${countryInfo.cases}">56 000</h1>
