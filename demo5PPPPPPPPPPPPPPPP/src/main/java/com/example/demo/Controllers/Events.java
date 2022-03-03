@@ -43,7 +43,7 @@ public class Events {
     }
 
 
-    @GetMapping({"/events",""})
+    @GetMapping("/events")
     public String gett(Model model)
     {
         String query = "SELECT * \n" +

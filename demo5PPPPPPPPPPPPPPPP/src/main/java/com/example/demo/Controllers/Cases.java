@@ -31,7 +31,7 @@ public class Cases {
         allCountries =new ArrayList<>();
         String line;
         StringBuffer responseContext = new StringBuffer();
-        request.getSession().setAttribute("zemja","Macedonia");
+        request.getSession().setAttribute("zemja","MACEDONIA");
         BufferedReader reader;
         try{
             URL url =new URL("https://api.covid19api.com/country/Macedonia" );
