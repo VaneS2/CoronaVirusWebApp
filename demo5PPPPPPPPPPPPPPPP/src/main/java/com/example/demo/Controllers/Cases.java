@@ -187,7 +187,7 @@ public class Cases {
 
     @GetMapping("/cases/country")
     public String showUsingSearch(Model model, HttpServletRequest request) throws IOException, JSONException {
-
+        model.addAttribute("datumm",java.time.LocalDate.now().toString());
         String zemja = request.getParameter("search");
         request.getSession().setAttribute("zemja",zemja);
 

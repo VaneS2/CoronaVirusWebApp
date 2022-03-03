@@ -133,6 +133,7 @@ public class Events {
     public String pokategorija(Model model, HttpServletRequest request) {
 
         String datum = request.getParameter("date");
+
         String []datumm=datum.split("/");
         String   finalDate= datumm[2] + "-" + datumm[0] + "-" + datumm[1];
 
