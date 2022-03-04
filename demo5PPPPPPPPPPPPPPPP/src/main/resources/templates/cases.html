@@ -33,9 +33,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -118,9 +116,7 @@
       width: '100%'
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-
-    chart.draw(data, options)
+   
   }
 </script>
 
@@ -146,7 +142,7 @@
   console.log(d)
 
 
-  google.load("current",  {packages:["corechart"]});
+
   google.charts.setOnLoadCallback(drawChart1);
   function drawChart1() {
     var data = google.visualization.arrayToDataTable(d,false);
@@ -173,7 +169,7 @@
     f[i+1]=[myval[i].datum + " ",myval[i].confirmed];
   }
 
-  google.load("current",  {packages:["corechart"]});
+
   google.charts.setOnLoadCallback(drawChart2);
   function drawChart2() {
     var data = google.visualization.arrayToDataTable(f,false);
@@ -188,10 +184,7 @@
     chart.draw(data, options);
   }
 
-  $(window).resize(function(){
-    drawChart1();
-    drawChart2();
-  });
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -211,9 +204,9 @@
     m[i+1]=[vkupno[i].datum + " ",vkupno[i].confirmed];
   }
 
-  google.load("current",  {packages:["corechart"]});
-  google.charts.setOnLoadCallback(drawChart2);
-  function drawChart2() {
+
+  google.charts.setOnLoadCallback(drawChart3);
+  function drawChart3() {
     var data = google.visualization.arrayToDataTable(m,false);
 
     var options = {
@@ -226,10 +219,7 @@
     chart.draw(data, options);
   }
 
-  $(window).resize(function(){
-    drawChart1();
-    drawChart2();
-  });
+
 
 
 
@@ -258,9 +248,9 @@
     la[i+1]=[vkupno[i].datum + " ",vkupno[i].deaths];
   }
 
-  google.load("current",  {packages:["corechart"]});
-  google.charts.setOnLoadCallback(drawChart2);
-  function drawChart2() {
+
+  google.charts.setOnLoadCallback(drawChart56);
+  function drawChart56() {
     var data = google.visualization.arrayToDataTable(la,false);
 
     var options = {
@@ -273,10 +263,7 @@
     chart.draw(data, options);
   }
 
-  $(window).resize(function(){
-    drawChart1();
-    drawChart2();
-  });
+
 
 
 </script>
@@ -568,8 +555,8 @@
 
 
           google.charts.load("current", {packages:["corechart"]});
-          google.charts.setOnLoadCallback(drawChart);
-          function drawChart() {
+          google.charts.setOnLoadCallback(drawChart655);
+          function drawChart655() {
             var data = google.visualization.arrayToDataTable([
               ['d', 'd'],
               ['Cases',     parseInt(niziste[0])],
