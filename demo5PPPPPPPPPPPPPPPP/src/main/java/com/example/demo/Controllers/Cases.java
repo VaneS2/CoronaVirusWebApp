@@ -43,8 +43,8 @@ public class Cases {
             URL url =new URL("https://api.covid19api.com/country/Macedonia" );
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(50000);
+            connection.setReadTimeout(50000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -108,8 +108,8 @@ public class Cases {
             URL url =new URL("https://corona.lmao.ninja/v2/countries");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(50000);
+            connection.setReadTimeout(50000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -202,8 +202,8 @@ public class Cases {
             URL url =new URL("https://api.covid19api.com/country/"+zemja );
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(50000);
+            connection.setReadTimeout(50000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -273,8 +273,8 @@ public class Cases {
             URL url =new URL("https://corona.lmao.ninja/v2/countries");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(50000);
+            connection.setReadTimeout(50000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
