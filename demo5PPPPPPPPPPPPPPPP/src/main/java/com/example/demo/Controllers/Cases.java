@@ -177,6 +177,7 @@ public class Cases {
         }
         // model.addAttribute("nastani", list);
 
+        model.addAttribute("lala", allCountries.get(0).getDatum());
 
         model.addAttribute("nastani", allCountries);
         model.addAttribute("vkupno",allCountries2);
