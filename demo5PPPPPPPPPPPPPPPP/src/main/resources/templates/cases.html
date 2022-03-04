@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <style>
     #kopce {
@@ -20,13 +20,7 @@
       color: orange;
     }
 
-
   </style>
-  <script th:inline="javascript">
-
-    var popo = /*[[${lal}]]*/ "test";
-    console.log(popo + " popopopopopopo");
-  </script>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
@@ -39,7 +33,9 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -87,7 +83,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script th:inline="javascript">
-  var myval = /*[[${nastani}]]*/ "TEST";
+  var myval = /*[[${nastani}]]*/;
 
 
 
@@ -122,7 +118,9 @@
       width: '100%'
     };
 
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
 
+    chart.draw(data, options)
   }
 </script>
 
@@ -148,7 +146,7 @@
   console.log(d)
 
 
-
+  google.load("current",  {packages:["corechart"]});
   google.charts.setOnLoadCallback(drawChart1);
   function drawChart1() {
     var data = google.visualization.arrayToDataTable(d,false);
@@ -175,7 +173,7 @@
     f[i+1]=[myval[i].datum + " ",myval[i].confirmed];
   }
 
-
+  google.load("current",  {packages:["corechart"]});
   google.charts.setOnLoadCallback(drawChart2);
   function drawChart2() {
     var data = google.visualization.arrayToDataTable(f,false);
@@ -190,7 +188,10 @@
     chart.draw(data, options);
   }
 
-
+  $(window).resize(function(){
+    drawChart1();
+    drawChart2();
+  });
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -198,7 +199,7 @@
 
 
 <script th:inline="javascript">
-  var vkupno = /*[[${vkupno}]]*/ "Test";
+  var vkupno = /*[[${vkupno}]]*/
 
   var m=new Array()
 
@@ -210,9 +211,9 @@
     m[i+1]=[vkupno[i].datum + " ",vkupno[i].confirmed];
   }
 
-
-  google.charts.setOnLoadCallback(drawChart3);
-  function drawChart3() {
+  google.load("current",  {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart2);
+  function drawChart2() {
     var data = google.visualization.arrayToDataTable(m,false);
 
     var options = {
@@ -225,7 +226,10 @@
     chart.draw(data, options);
   }
 
-
+  $(window).resize(function(){
+    drawChart1();
+    drawChart2();
+  });
 
 
 
@@ -240,7 +244,7 @@
 
 
 <script th:inline="javascript">
-  var vkupno = /*[[${vkupno}]]*/ "test";
+  var vkupno = /*[[${vkupno}]]*/
 
 
 
@@ -254,9 +258,9 @@
     la[i+1]=[vkupno[i].datum + " ",vkupno[i].deaths];
   }
 
-
-  google.charts.setOnLoadCallback(drawChart56);
-  function drawChart56() {
+  google.load("current",  {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart2);
+  function drawChart2() {
     var data = google.visualization.arrayToDataTable(la,false);
 
     var options = {
@@ -269,9 +273,25 @@
     chart.draw(data, options);
   }
 
+  $(window).resize(function(){
+    drawChart1();
+    drawChart2();
+  });
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -288,10 +308,19 @@
 </style>
 
 
+
+
+
+
+
+
+
+
+
 <div class="row">
   <div  class="col-md-12 text-center">
 
-    <p  style="width: 300px; font-family: Roboto"><h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1> <img th:src="${session.countryInfo.countryImg}"> <p></p> </p>
+    <p  style="width: 300px; font-family: Roboto"><h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1> <img th:src="${countryInfo.countryImg}"> </p>
     <form class=" text-center" th:method="GET" th:action="@{'/cases/country'}">
       <form class="example" action="action_page.php">
         <select id="countryyyy" name="search" class="btn btn-outline-primary active rounded-pill text-center" style="background: white; color: black; height: 31px; font-size: 13px; font-family:Roboto">
@@ -484,7 +513,6 @@
 
   </div>
 </div>
-
 <div style="height: 45px"></div>
 
 <style>
@@ -506,10 +534,10 @@
     </div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Confirmed cases </h3> <h1 th:text="${session.countryInfo.cases}">56 000</h1>
+      <h3>Confirmed cases </h3> <h1 th:text="${countryInfo.cases}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily cases </h3> <h1 th:text="${session.countryInfo.totalCases}">4 000</h1>
+      <h3>Daily cases </h3> <h1 th:text="${countryInfo.totalCases}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 
@@ -523,10 +551,10 @@
 
     <div style="height: 80px" class="col-12"></div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Deaths  </h3> <h1 th:text="${session.countryInfo.deaths}">56 000</h1>
+      <h3>Deaths  </h3> <h1 th:text="${countryInfo.deaths}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily deaths </h3> <h1 th:text="${session.countryInfo.todayDeaths}">4 000</h1>
+      <h3>Daily deaths </h3> <h1 th:text="${countryInfo.todayDeaths}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 
@@ -541,10 +569,10 @@
     <div style="height: 80px" class="col-12"></div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Recovered </h3> <h1 th:text="${session.countryInfo.recovered}">56 000</h1>
+      <h3>Recovered </h3> <h1 th:text="${countryInfo.recovered}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily recovered </h3> <h1 th:text="${session.countryInfo.todayRecovered}">4 000</h1>
+      <h3>Daily recovered </h3> <h1 th:text="${countryInfo.todayRecovered}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 
@@ -552,7 +580,7 @@
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script th:inline="javascript">
-          var pita = /*[[${pita}]]*/ Test;
+          var pita = /*[[${pita}]]*/;
 
           var  niziste = pita.split(".");
           console.log(niziste);
@@ -560,8 +588,8 @@
 
 
           google.charts.load("current", {packages:["corechart"]});
-          google.charts.setOnLoadCallback(drawChart655);
-          function drawChart655() {
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ['d', 'd'],
               ['Cases',     parseInt(niziste[0])],
@@ -585,14 +613,54 @@
 
     </div>
 
+<!---
 
+    <div style="height: 80px" class="col-12"></div>
+
+    <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
+      <h3>Vaccinated </h3> <h1>56 000</h1>
+    </div>
+    <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
+      <h3>Daily vaccinated </h3> <h1>4 000</h1>
+    </div>
+    <div style="height: 10px" class="col-12"></div>
+
+    <div class="col-sm-4 chartss col-md-8 col-lg-5 bg-light    ">
+      <h3>Daily cases </h3> <h1>4 000</h1>
+    </div>
+
+--->
 <div style="height: 150px;"></div>
+
 </div>
 
 <br/>
 <br/>
 <br/>
-</div>
+
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+
+            </p>
+          </div>
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container -->
+</footer>
 
 
 
