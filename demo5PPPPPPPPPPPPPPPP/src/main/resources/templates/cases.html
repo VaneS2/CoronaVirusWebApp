@@ -83,7 +83,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script th:inline="javascript">
-  var myval = /*[[${nastani}]]*/;
+  var myval = /*[[${nastani}]]*/ "TEST";
 
 
 
@@ -199,7 +199,7 @@
 
 
 <script th:inline="javascript">
-  var vkupno = /*[[${vkupno}]]*/
+  var vkupno = /*[[${vkupno}]]*/ "Test";
 
   var m=new Array()
 
@@ -244,7 +244,7 @@
 
 
 <script th:inline="javascript">
-  var vkupno = /*[[${vkupno}]]*/
+  var vkupno = /*[[${vkupno}]]*/ "test";
 
 
 
@@ -285,18 +285,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
   .chart {
     width: 100%;
@@ -306,15 +294,6 @@
     margin:0 !important;
   }
 </style>
-
-
-
-
-
-
-
-
-
 
 
 <div class="row">
@@ -513,6 +492,7 @@
 
   </div>
 </div>
+
 <div style="height: 45px"></div>
 
 <style>
@@ -613,56 +593,15 @@
 
     </div>
 
-<!---
 
-    <div style="height: 80px" class="col-12"></div>
-
-    <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Vaccinated </h3> <h1>56 000</h1>
-    </div>
-    <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily vaccinated </h3> <h1>4 000</h1>
-    </div>
-    <div style="height: 10px" class="col-12"></div>
-
-    <div class="col-sm-4 chartss col-md-8 col-lg-5 bg-light    ">
-      <h3>Daily cases </h3> <h1>4 000</h1>
-    </div>
-
---->
 <div style="height: 150px;"></div>
-
 </div>
 
 <br/>
 <br/>
 <br/>
-
-
-<footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-
-            </p>
-          </div>
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
-  </div>
-  <!-- Grid container -->
-</footer>
-
 </div>
+
 
 
 
