@@ -263,7 +263,8 @@
     chart.draw(data, options);
   }
 
-
+  var popo = /*[[${popo}]]*/ "test";
+  console.log(popo);
 
 
 </script>
@@ -286,7 +287,7 @@
 <div class="row">
   <div  class="col-md-12 text-center">
 
-    <p  style="width: 300px; font-family: Roboto"><h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1> <img> <p></p> </p>
+    <p  style="width: 300px; font-family: Roboto"><h1 class=" text-center" th:text="${session.zemja}">MACEDONIA</h1> <img th:src="${session.countryInfo.countryImg}"> <p></p> </p>
     <form class=" text-center" th:method="GET" th:action="@{'/cases/country'}">
       <form class="example" action="action_page.php">
         <select id="countryyyy" name="search" class="btn btn-outline-primary active rounded-pill text-center" style="background: white; color: black; height: 31px; font-size: 13px; font-family:Roboto">
@@ -501,10 +502,10 @@
     </div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Confirmed cases </h3> <h1 >56 000</h1>
+      <h3>Confirmed cases </h3> <h1 th:text="${session.countryInfo.cases}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily cases </h3> <h1 >4 000</h1>
+      <h3>Daily cases </h3> <h1 th:text="${session.countryInfo.totalCases}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 
@@ -518,10 +519,10 @@
 
     <div style="height: 80px" class="col-12"></div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Deaths  </h3> <h1 >56 000</h1>
+      <h3>Deaths  </h3> <h1 th:text="${session.countryInfo.deaths}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily deaths </h3> <h1 >4 000</h1>
+      <h3>Daily deaths </h3> <h1 th:text="${session.countryInfo.todayDeaths}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 
@@ -536,10 +537,10 @@
     <div style="height: 80px" class="col-12"></div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Recovered </h3> <h1>56 000</h1>
+      <h3>Recovered </h3> <h1 th:text="${session.countryInfo.recovered}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily recovered </h3> <h1>4 000</h1>
+      <h3>Daily recovered </h3> <h1 th:text="${session.countryInfo.todayRecovered}">4 000</h1>
     </div>
     <div style="height: 10px" class="col-12"></div>
 

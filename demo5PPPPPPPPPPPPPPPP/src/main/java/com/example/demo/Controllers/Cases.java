@@ -154,7 +154,7 @@ public class Cases {
 
 
                     );
-                    model.addAttribute("countryInfo",countryInfo);
+                    request.getSession().setAttribute("countryInfo",countryInfo);
                     model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
                     model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
 
@@ -320,7 +320,8 @@ public class Cases {
 
 
                     );
-                   model.addAttribute("countryInfo",countryInfo);
+                    model.addAttribute("popo",responseContext2.toString());
+                    request.getSession().setAttribute("countryInfo",countryInfo);
                    model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
                    model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
 
