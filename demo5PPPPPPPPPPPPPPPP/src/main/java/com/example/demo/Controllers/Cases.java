@@ -85,6 +85,76 @@ public class Cases {
 
             model.addAttribute("datumm",java.time.LocalDate.now().toString());
 
+            String line2;
+            StringBuffer responseContext2 = new StringBuffer();
+            BufferedReader reader2;
+
+             url =new URL("https://corona.lmao.ninja/v2/countries");
+            connection=(HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(50000);
+            connection.setReadTimeout(50000);
+             status=connection.getResponseCode();
+            if(status>299){
+                reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                }
+                reader2.close();
+            }
+            else{
+                reader2=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                    break;
+                }
+                reader2.close();
+
+            }
+
+             data= new JSONArray(responseContext2.toString());
+             previousDay =null;
+            for(int i=0;i<data.length();i++) {
+
+                JSONObject day = data.getJSONObject(i);
+                String zemja1=day.getString("country").toUpperCase(Locale.ROOT);
+                if(zemja1.equals("MACEDONIA"))
+                {
+                    String img=day.getJSONObject("countryInfo").getString("flag");
+
+                    CountryInfo countryInfo= new CountryInfo(
+                            day.getString("country"),
+                            img,
+                            day.getInt("cases"),
+                            day.getInt("todayCases"),
+                            day.getInt("deaths"),
+                            day.getInt("todayDeaths"),
+                            day.getInt("recovered"),
+                            day.getInt("todayRecovered"),
+                            day.getInt("active"),
+                            day.getInt("population"),
+                            day.getInt("tests")
+
+
+
+                    );
+                    request.getSession().setAttribute("countryInfo",countryInfo);
+                    model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
+                    model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
+                    System.out.println(countryInfo.country);
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+
 
 
         }catch (MalformedURLException e) {
@@ -100,7 +170,7 @@ public class Cases {
 
         ////////////////////////////////////////////////////////////////////////////////////////
 
-        String line2;
+       /* String line2;
         StringBuffer responseContext2 = new StringBuffer();
         BufferedReader reader2;
 
@@ -174,7 +244,7 @@ public class Cases {
             e.printStackTrace();
         } finally {
             connection.disconnect();
-        }
+        }*/
         // model.addAttribute("nastani", list);
 
         model.addAttribute("lala", allCountries.get(0).getDatum());
@@ -276,6 +346,7 @@ public class Cases {
             connection.setConnectTimeout(50000);
             connection.setReadTimeout(50000);
             int status=connection.getResponseCode();
+            System.out.println(status);
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 while((line2=reader2.readLine())!=null){
@@ -320,7 +391,7 @@ public class Cases {
 
 
                     );
-                    model.addAttribute("popo",responseContext2.toString());
+
                     request.getSession().setAttribute("countryInfo",countryInfo);
                    model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
                    model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
