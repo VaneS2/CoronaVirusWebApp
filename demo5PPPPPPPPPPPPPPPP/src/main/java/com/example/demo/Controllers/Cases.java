@@ -95,6 +95,7 @@ public class Cases {
             connection.setConnectTimeout(50000);
             connection.setReadTimeout(50000);
              status=connection.getResponseCode();
+             model.addAttribute("lal",status);
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 while((line2=reader2.readLine())!=null){

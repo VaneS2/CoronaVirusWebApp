@@ -20,7 +20,13 @@
       color: orange;
     }
 
+
   </style>
+  <script th:inline="javascript">
+
+    var popo = /*[[${lal}]]*/ "test";
+    console.log(popo + " popopopopopopo");
+  </script>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
@@ -263,8 +269,6 @@
     chart.draw(data, options);
   }
 
-  var popo = /*[[${popo}]]*/ "test";
-  console.log(popo + " popopopopopopo");
 
 
 </script>
