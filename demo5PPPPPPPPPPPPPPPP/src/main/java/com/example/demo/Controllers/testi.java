@@ -27,6 +27,8 @@ public class testi {
         BufferedReader reader2;
 
         try{
+
+
             URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja=ALBANIA");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
