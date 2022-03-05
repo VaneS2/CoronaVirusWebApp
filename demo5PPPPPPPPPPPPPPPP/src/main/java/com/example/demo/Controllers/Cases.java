@@ -105,7 +105,7 @@ public class Cases {
         BufferedReader reader2;
 
         try{
-            URL url =new URL("https://corona.lmao.ninja/v2/countries");
+            URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja=MACEDONIA");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
@@ -128,40 +128,19 @@ public class Cases {
 
             }
 
-            JSONArray data= new JSONArray(responseContext2.toString());
-            JSONObject previousDay =null;
-            for(int i=0;i<data.length();i++) {
-
-                JSONObject day = data.getJSONObject(i);
-                String zemja1=day.getString("country").toUpperCase(Locale.ROOT);
-                if(zemja1.equals("MACEDONIA"))
-                {
-                    String img=day.getJSONObject("countryInfo").getString("flag");
-
-                    CountryInfo countryInfo= new CountryInfo(
-                            day.getString("country"),
-                            img,
-                            day.getInt("cases"),
-                            day.getInt("todayCases"),
-                            day.getInt("deaths"),
-                            day.getInt("todayDeaths"),
-                            day.getInt("recovered"),
-                            day.getInt("todayRecovered"),
-                            day.getInt("active"),
-                            day.getInt("population"),
-                            day.getInt("tests")
+            JSONObject data= new JSONObject(responseContext2.toString());
 
 
+            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),data.getInt("cases"),
+                    data.getInt("totalCases"),data.getInt("deaths"),data.getInt("todayDeaths"),data.getInt("recovered"),
+                    data.getInt("todayRecovered"),data.getInt("active"),data.getInt("population"),data.getInt("tests"));
 
-                    );
                     model.addAttribute("countryInfo",countryInfo);
-                    model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
-                    model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
+                    model.addAttribute("pita",data.getInt("cases")+"."+data.getInt("recovered")+"."+data.getInt("active")+"."+data.getInt("deaths"));
 
 
-                }
 
-            }
+
 
 
 
@@ -269,7 +248,7 @@ public class Cases {
         BufferedReader reader2;
 
         try{
-            URL url =new URL("https://corona.lmao.ninja/v2/countries");
+            URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja="+ zemja);
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
@@ -292,41 +271,22 @@ public class Cases {
 
             }
 
-            JSONArray data= new JSONArray(responseContext2.toString());
-            JSONObject previousDay =null;
-            for(int i=0;i<data.length();i++) {
+            JSONObject data= new JSONObject(responseContext2.toString());
 
-                JSONObject day = data.getJSONObject(i);
-                String zemja1=day.getString("country").toUpperCase(Locale.ROOT);
-                String zemja2=zemja.toUpperCase(Locale.ROOT);
-                if(zemja1.equals(zemja2))
-                {
-                    String img=day.getJSONObject("countryInfo").getString("flag");
 
-                    CountryInfo countryInfo= new CountryInfo(
-                            day.getString("country"),
-                           img,
-                            day.getInt("cases"),
-                            day.getInt("todayCases"),
-                            day.getInt("deaths"),
-                            day.getInt("todayDeaths"),
-                            day.getInt("recovered"),
-                            day.getInt("todayRecovered"),
-                            day.getInt("active"),
-                            day.getInt("population"),
-                            day.getInt("tests")
+            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),data.getInt("cases"),
+                    data.getInt("totalCases"),data.getInt("deaths"),data.getInt("todayDeaths"),data.getInt("recovered"),
+                    data.getInt("todayRecovered"),data.getInt("active"),data.getInt("population"),data.getInt("tests"));
+
+            model.addAttribute("countryInfo",countryInfo);
+            model.addAttribute("pita",data.getInt("cases")+"."+data.getInt("recovered")+"."+data.getInt("active")+"."+data.getInt("deaths"));
 
 
 
-                    );
-                   model.addAttribute("countryInfo",countryInfo);
-                   model.addAttribute("pita",day.getInt("cases")+"."+day.getInt("recovered")+"."+day.getInt("active")+"."+day.getInt("deaths"));
-                   model.addAttribute("populacijaCases",day.getInt("cases")+"."+day.getInt("population"));
 
 
-                }
 
-            }
+
 
 
 
