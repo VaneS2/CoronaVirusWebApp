@@ -108,8 +108,8 @@ public class Cases {
             URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja=MACEDONIA");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(5000000);
+            connection.setReadTimeout(5000000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
