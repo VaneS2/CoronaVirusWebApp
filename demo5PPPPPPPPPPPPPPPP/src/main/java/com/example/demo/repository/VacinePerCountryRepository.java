@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface VacinePerCountryRepository extends JpaRepository<VaccinePerCountry,Long> {
 
-    @Query("select u from VaccinePerCountry u where u.REPORT_COUNTRY like %?1%  ")
+    @Query("select u from VaccinePerCountry u where u.REPORT_COUNTRY  =?1  ")
     VaccinePerCountry getByCountry (String country);
 }

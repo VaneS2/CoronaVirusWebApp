@@ -94,7 +94,7 @@ public class Cases {
 
             model.addAttribute("datumm",java.time.LocalDate.now().toString());
 
-            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry("Macedonia"));
+            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry("MACEDONIA"));
 
 
 
@@ -292,13 +292,13 @@ public class Cases {
 
 
 
-            String [] zemjaNiza= zemja.split("");
+           /* String [] zemjaNiza= zemja.split("");
             String izlezZemja=zemjaNiza[0];
             for(int i=1;i<zemjaNiza.length;i++)
             {
                 izlezZemja+=zemjaNiza[i].toLowerCase();
-            }
-            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry(izlezZemja));
+            }*/
+            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry(zemja));
 
             model.addAttribute("countryInfo",countryInfo);
             model.addAttribute("pita",data.getInt("cases")+"."+data.getInt("recovered")+"."+data.getInt("active")+"."+data.getInt("deaths"));
