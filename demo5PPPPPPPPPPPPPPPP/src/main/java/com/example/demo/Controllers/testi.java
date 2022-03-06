@@ -57,9 +57,6 @@ public class testi {
             System.out.println(data.getString("countryImg"));
 
 
-
-
-
         }catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
