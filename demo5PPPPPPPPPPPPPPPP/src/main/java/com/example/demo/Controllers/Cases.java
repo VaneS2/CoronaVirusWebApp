@@ -1,8 +1,10 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.models.CoronaEvents;
 import com.example.demo.models.Country;
 import com.example.demo.models.CountryInfo;
+
+import com.example.demo.models.GlobalCases;
+import com.example.demo.services.VacinePerCountryService;
 import org.aspectj.bridge.AbortException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +19,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 @Controller
@@ -28,6 +29,14 @@ public class Cases {
     ArrayList<Country> allCountries;
     ArrayList<Country> allCountries2;
 
+    private final VacinePerCountryService vacinePerCountryService;
+
+    HttpURLConnection connection2;
+    GlobalCases izlez2=null;
+
+    public Cases(VacinePerCountryService vacinePerCountryService) {
+        this.vacinePerCountryService = vacinePerCountryService;
+    }
 
 
     @GetMapping("/cases")
@@ -84,6 +93,8 @@ public class Cases {
 
 
             model.addAttribute("datumm",java.time.LocalDate.now().toString());
+
+            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry("Macedonia"));
 
 
 
@@ -278,6 +289,17 @@ public class Cases {
                     data.getInt("totalCases"),data.getInt("deaths"),data.getInt("todayDeaths"),data.getInt("recovered"),
                     data.getInt("todayRecovered"),data.getInt("active"),data.getInt("population"),data.getInt("tests"));
 
+
+
+
+            String [] zemjaNiza= zemja.split("");
+            String izlezZemja=zemjaNiza[0];
+            for(int i=1;i<zemjaNiza.length;i++)
+            {
+                izlezZemja+=zemjaNiza[i].toLowerCase();
+            }
+            model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry(izlezZemja));
+
             model.addAttribute("countryInfo",countryInfo);
             model.addAttribute("pita",data.getInt("cases")+"."+data.getInt("recovered")+"."+data.getInt("active")+"."+data.getInt("deaths"));
 
@@ -308,8 +330,121 @@ public class Cases {
     }
 
     @GetMapping("/global")
-    public String visual(){
+    public String visual(Model model){
+
+        String line2;
+        StringBuffer responseContext2 = new StringBuffer();
+        BufferedReader reader2;
+
+
+
+
+        try{
+            URL url =new URL("https://disease.sh/v3/covid-19/all");
+            connection2=(HttpURLConnection)url.openConnection();
+            connection2.setRequestMethod("GET");
+            connection2.setConnectTimeout(5000);
+            connection2.setReadTimeout(5000);
+            int status=connection2.getResponseCode();
+            if(status>299){
+                reader2=new BufferedReader(new InputStreamReader(connection2.getErrorStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                }
+                reader2.close();
+            }
+            else{
+                reader2=new BufferedReader(new InputStreamReader(connection2.getInputStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                    break;
+                }
+                reader2.close();
+
+            }
+
+            JSONObject global = new JSONObject(responseContext2.toString());
+
+
+            izlez2= new GlobalCases(global.getInt("updated"),global.getInt("cases"),global.getInt("todayCases"),global.getInt("deaths"),global.getInt("todayDeaths")
+                    ,global.getInt("recovered"),global.getInt("todayRecovered"),global.getInt("active"),global.getInt("critical"),global.getInt("casesPerOneMillion"),
+                    global.getInt("deathsPerOneMillion"),global.getInt("tests"));
+
+
+            model.addAttribute("vcGlobal",izlez2);
+
+
+
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            connection2.disconnect();
+        }
         return "global.html";
     }
 
+
+
+
+   /* public void vaccinePerCountry (String country)
+    {
+
+        String line2;
+        StringBuffer responseContext2 = new StringBuffer();
+        BufferedReader reader2;
+
+
+
+
+        try{
+            URL url =new URL("https://covid19.who.int/who-data/vaccination-data.csv");
+            connection2=(HttpURLConnection)url.openConnection();
+            connection2.setRequestMethod("GET");
+            connection2.setConnectTimeout(5000);
+            connection2.setReadTimeout(5000);
+            int status=connection2.getResponseCode();
+            if(status>299){
+                reader2=new BufferedReader(new InputStreamReader(connection2.getErrorStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                }
+                reader2.close();
+            }
+            else{
+                reader2=new BufferedReader(new InputStreamReader(connection2.getInputStream()));
+                while((line2=reader2.readLine())!=null){
+                    responseContext2.append(line2);
+                    break;
+                }
+                reader2.close();
+
+            }
+
+           // JSONObject object = new JSONObject(responseContext2.toString());
+           // JSONArray data= object.getJSONArray("data");
+            System.out.println(responseContext2);
+
+
+
+
+
+
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            connection2.disconnect();
+        }
+
+    }*/
+
+
+
 }
+
+

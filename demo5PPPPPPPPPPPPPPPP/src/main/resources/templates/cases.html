@@ -492,7 +492,7 @@
           <option value="TUNISIA">Tunisia</option>
           <option value="TURKEY">Turkey</option>
           <option value="UGANDA">Uganda</option>
-          <option value="UNITED KINGDOM">United Kingdom</option>
+          <option value="UK">United Kingdom</option>
 
           <option value="UKRAINE">Ukraine</option>
           <option value="UNITED ARAB EMIRATES">United Arab Emirates</option>
@@ -592,10 +592,10 @@
           function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ['d', 'd'],
-              ['Cases',     parseInt(niziste[0])],
+              ['Recovered',       parseInt(niziste[1])],
               ['Deaths',  parseInt(niziste[3]) ],
               ['Active',  parseInt(niziste[2]) ],
-              ['Recovered',       parseInt(niziste[1])]
+
 
             ]);
 
@@ -613,23 +613,70 @@
 
     </div>
 
-<!---
+
 
     <div style="height: 80px" class="col-12"></div>
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
-      <h3>Vaccinated </h3> <h1>56 000</h1>
+
+      <h3>Vaccinated </h3> <h1 th:text="${vaccinePerCountry.TOTAL_VACCINATIONS}">56 000</h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Daily vaccinated </h3> <h1>4 000</h1>
+      <h3>Fully Vaccinated </h3> <h1 th:text="${vaccinePerCountry.PERSONS_FULLY_VACCINATED}">4 000</h1>
     </div>
-    <div style="height: 10px" class="col-12"></div>
+    <div class="col-sm-4 chartss col-md-5 col-lg-5     ">
 
-    <div class="col-sm-4 chartss col-md-8 col-lg-5 bg-light    ">
-      <h3>Daily cases </h3> <h1>4 000</h1>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script th:inline="javascript">
+
+        var pita2 = /*[[${vaccinePerCountry}]]*/;
+        var countryINFO = /*[[${countryInfo}]]*/;
+
+        var pita22=pita2.persons_FULLY_VACCINATED;
+        var population=countryINFO.population
+
+        var zz=((pita22/population)*100) + "";
+        var izlez=zz.split(".");
+
+       var brj=parseInt(izlez[0])
+        console.log(brj)
+
+        var lajno=100-brj;
+
+
+
+
+
+
+
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['d', 'd'],
+            ['Fully vaccinated',   brj   ],
+            ['Not vaccinated', lajno ],
+
+          ]);
+
+          var options = {
+            title: '',
+            colors: ['green','red'],
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_4d'));
+          chart.draw(data, options);
+        }
+      </script>
+
+      <div id="piechart_4d" style="width: 900px; height: 500px;"></div>
+
     </div>
 
---->
+
+
+
 <div style="height: 150px;"></div>
 
 </div>
