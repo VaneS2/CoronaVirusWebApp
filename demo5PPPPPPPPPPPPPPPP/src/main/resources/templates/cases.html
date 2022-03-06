@@ -576,7 +576,7 @@
     </div>
     <div style="height: 10px" class="col-12"></div>
 
-    <div class="col-sm-4 chartss col-md-5 col-lg-5     ">
+    <div class="col-sm-1 chartss col-md-5 col-lg-5     ">
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script th:inline="javascript">
@@ -592,10 +592,10 @@
           function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ['d', 'd'],
-              ['Cases',     parseInt(niziste[0])],
-              ['Deaths',  parseInt(niziste[3]) ],
+              ['Recovered',  parseInt(niziste[1]) ],
+              ['Deaths',       parseInt(niziste[3])],
               ['Active',  parseInt(niziste[2]) ],
-              ['Recovered',       parseInt(niziste[1])]
+
 
             ]);
 
