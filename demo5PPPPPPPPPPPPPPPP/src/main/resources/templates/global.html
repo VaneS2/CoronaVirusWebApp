@@ -71,18 +71,18 @@
 <div class="container text-center paDD">
     <div style="font-family: Roboto" class="row my-custom-row justify-content-center align-items-center">
 
-        <div th style="height: 55px" class="col-md-3 bg-light border border-3 border-primary"><b>Confirmed cases:</b> <h4 th:text="${vcGlobal.cases}"></h4></div>
-        <div style="height: 55px" class="col-md-3 bg-light border border-3 border-primary"><b>Daily cases:</b> <h4 th:text="${vcGlobal.todayCases}"</h4></div>
-        <div style="height: 55px" class="col-md-3 bg-light border border-3 border-danger"><b>Death cases: </b><h4 th:text="${vcGlobal.deaths}"></h4> </div>
-        <div style="height: 55px" class="col-md-3 bg-light border border-3 border-danger"><b>Daily deaths:</b> <h4 th:text="${vcGlobal.todayDeaths}"></h4> </div>
+        <div th style="height: 55px" class="col-md-3 rounded-pill  bg-light border border-3 border-primary"><b>Confirmed cases:</b> <h4 th:text="${vcGlobal.cases}"></h4></div>
+        <div style="height: 55px" class="col-md-3 rounded-pill  bg-light border border-3 border-primary"><b>Daily cases:</b> <h4 th:text="${vcGlobal.todayCases}"</h4></div>
+        <div style="height: 55px" class="col-md-3 rounded-pill  bg-light border border-3 border-danger"><b>Death cases: </b><h4 th:text="${vcGlobal.deaths}"></h4> </div>
+        <div style="height: 55px" class="col-md-3 rounded-pill   bg-light border border-3 border-danger"><b>Daily deaths:</b> <h4 th:text="${vcGlobal.todayDeaths}"></h4> </div>
         <div style="height: 3px"></div>
         <div class="row my-custom-row justify-content-center align-items-center">
-            <div style="height: 55px" class="col-md-3 bg-light border border-3 border-success"><b>Recovered cases: </b><h4 th:text="${vcGlobal.recovered}"></h4> </div>
-            <div style="height: 55px" class="col-md-3 bg-light border border-3 border-success"><b>Daily recovered:</b> <h4 th:text="${vcGlobal.todayRecovered}"></h4> </div>
+            <div style="height: 55px" class="col-md-3 rounded-pill  bg-light border border-3 border-success"><b>Recovered cases: </b><h4 th:text="${vcGlobal.recovered}"></h4> </div>
+            <div style="height: 55px" class="col-md-3  rounded-pill  bg-light border border-3 border-success"><b>Daily recovered:</b> <h4 th:text="${vcGlobal.todayRecovered}"></h4> </div>
 
         </div>
         <div style="height: 3px"></div>
-        <div style="height: 55px"  class="col-md-3 bg-light border border-3 border-warning"><b>Active cases:</b> <h4 th:text="${vcGlobal.active}"></h4> </div>
+        <div style="height: 55px"  class="col-md-3 rounded-pill  bg-light border border-3 border-warning"><b>Active cases:</b> <h4 th:text="${vcGlobal.active}"></h4> </div>
 
     </div>
 </div>
