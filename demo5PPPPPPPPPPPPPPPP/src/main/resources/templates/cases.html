@@ -618,10 +618,10 @@
 
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light text-center rounded-pill ">
 
-      <h3>Vaccinated </h3> <h1 th:text="${vaccinePerCountry.TOTAL_VACCINATIONS}">56 000</h1>
+      <h3>Vaccinated </h3> <h1 id="vakcinirani" ></h1>
     </div>
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
-      <h3>Fully Vaccinated </h3> <h1 th:text="${vaccinePerCountry.PERSONS_FULLY_VACCINATED}">4 000</h1>
+      <h3>Fully Vaccinated </h3> <h1 id="celosno" ></h1>
     </div>
     <div class="col-sm-4 chartss col-md-5 col-lg-5     ">
 
@@ -629,6 +629,10 @@
       <script th:inline="javascript">
 
         var pita2 = /*[[${vaccinePerCountry}]]*/;
+
+        document.getElementById("celosno").innerHTML= parseInt(pita2.persons_FULLY_VACCINATED);
+        document.getElementById("vakcinirani").innerHTML= parseInt(pita2.total_VACCINATIONS);
+
         var countryINFO = /*[[${countryInfo}]]*/;
 
         var pita22=pita2.persons_FULLY_VACCINATED;
