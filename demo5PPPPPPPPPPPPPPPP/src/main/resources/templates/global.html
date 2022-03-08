@@ -109,26 +109,32 @@
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script>
 
-<script type="text/javascript" >
+<script th:inline="javascript" >
+    var zaMapaa = /*[[${zamapa}]]*/"test";
+
+console.log(zaMapaa);
+var izlez=[]
+
+izlez[0]=['country','FULLY_VACCINATED_PER100','total_VACCINATIONS']
+for(var i=1;i<zaMapaa.length;i++)
+{
+
+  izlez[i]=[zaMapaa[i].country,zaMapaa[i].persons_FULLY_VACCINATED_PER100,zaMapaa[i].total_VACCINATIONS]
+
+
+
+}
+
     google.charts.load('current', {
         'packages':['geochart'],
     });
     google.charts.setOnLoadCallback(drawRegionsMap);
 
     function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-            ['Country', 'Popularity'],
-            ['Germany', 200],
-            ['United States', 300],
-            ['Brazil', 400],
-            ['Canada', 500],
-            ['France', 600],
-            ['RU', 700]
-        ]);
+        var data = google.visualization.arrayToDataTable(izlez,false);
 
         var options = {
-
-
+            colors:['purple']
         };
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
@@ -137,7 +143,19 @@
     }
 </script>
 
-<div class="col-md-10 " id="regions_div" style="width: 90%; height: 90%;"></div>
+
+
+
+
+
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="regions_div" style="width: 80%; height: 80%;"></div>
 
 
 </div>

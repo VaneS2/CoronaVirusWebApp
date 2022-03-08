@@ -623,26 +623,34 @@
     <div class="col-sm-4 visina col-md-4 col-lg-4 bg-light offset-md-1 text-center rounded-pill     ">
       <h3>Fully Vaccinated </h3> <h1 id="celosno" ></h1>
     </div>
+
+    <div id="populacija" class="col-md-12 text-center"></div>
     <div class="col-sm-4 chartss col-md-5 col-lg-5     ">
+
+
 
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script th:inline="javascript">
 
-        var pita2 = /*[[${vaccinePerCountry}]]*/;
+
+
+
+        var pita2 = /*[[${vaccinePerCountry}]]*/"test";
 
         document.getElementById("celosno").innerHTML= parseInt(pita2.persons_FULLY_VACCINATED);
         document.getElementById("vakcinirani").innerHTML= parseInt(pita2.total_VACCINATIONS);
 
-        var countryINFO = /*[[${countryInfo}]]*/;
+        var countryINFO = /*[[${countryInfo}]]*/ "test";
 
         var pita22=pita2.persons_FULLY_VACCINATED;
         var population=countryINFO.population
+        document.getElementById("populacija").innerHTML="Population: <h4><b>" + parseInt(population) + "</b></h4>";
 
         var zz=((pita22/population)*100) + "";
         var izlez=zz.split(".");
 
        var brj=parseInt(izlez[0])
-        console.log(brj)
+
 
         var lajno=100-brj;
 

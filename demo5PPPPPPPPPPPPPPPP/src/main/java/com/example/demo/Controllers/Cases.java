@@ -4,6 +4,7 @@ import com.example.demo.models.Country;
 import com.example.demo.models.CountryInfo;
 
 import com.example.demo.models.GlobalCases;
+import com.example.demo.services.CountryForMapService;
 import com.example.demo.services.VacinePerCountryService;
 import org.aspectj.bridge.AbortException;
 import org.json.JSONArray;
@@ -30,12 +31,14 @@ public class Cases {
     ArrayList<Country> allCountries2;
 
     private final VacinePerCountryService vacinePerCountryService;
+    private final CountryForMapService countryForMapService;
 
     HttpURLConnection connection2;
     GlobalCases izlez2=null;
 
-    public Cases(VacinePerCountryService vacinePerCountryService) {
+    public Cases(VacinePerCountryService vacinePerCountryService, CountryForMapService countryForMapService) {
         this.vacinePerCountryService = vacinePerCountryService;
+        this.countryForMapService = countryForMapService;
     }
 
 
@@ -262,8 +265,8 @@ public class Cases {
             URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja="+ zemja);
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(15000000);
+            connection.setReadTimeout(1500000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -332,6 +335,8 @@ public class Cases {
     @GetMapping("/global")
     public String visual(Model model){
 
+
+
         String line2;
         StringBuffer responseContext2 = new StringBuffer();
         BufferedReader reader2;
@@ -372,6 +377,7 @@ public class Cases {
 
 
             model.addAttribute("vcGlobal",izlez2);
+            model.addAttribute("zamapa",countryForMapService.giveAll());
 
 
 
@@ -390,58 +396,9 @@ public class Cases {
 
 
 
-   /* public void vaccinePerCountry (String country)
-    {
-
-        String line2;
-        StringBuffer responseContext2 = new StringBuffer();
-        BufferedReader reader2;
 
 
 
-
-        try{
-            URL url =new URL("https://covid19.who.int/who-data/vaccination-data.csv");
-            connection2=(HttpURLConnection)url.openConnection();
-            connection2.setRequestMethod("GET");
-            connection2.setConnectTimeout(5000);
-            connection2.setReadTimeout(5000);
-            int status=connection2.getResponseCode();
-            if(status>299){
-                reader2=new BufferedReader(new InputStreamReader(connection2.getErrorStream()));
-                while((line2=reader2.readLine())!=null){
-                    responseContext2.append(line2);
-                }
-                reader2.close();
-            }
-            else{
-                reader2=new BufferedReader(new InputStreamReader(connection2.getInputStream()));
-                while((line2=reader2.readLine())!=null){
-                    responseContext2.append(line2);
-                    break;
-                }
-                reader2.close();
-
-            }
-
-           // JSONObject object = new JSONObject(responseContext2.toString());
-           // JSONArray data= object.getJSONArray("data");
-            System.out.println(responseContext2);
-
-
-
-
-
-
-        }catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            connection2.disconnect();
-        }
-
-    }*/
 
 
 
