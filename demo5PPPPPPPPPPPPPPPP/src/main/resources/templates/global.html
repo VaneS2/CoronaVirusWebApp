@@ -193,12 +193,60 @@ for(var i=1;i<zaMapaa.length;i++)
         <div class="col-md-9"></div>
         <input class="col-md-1  btn btn-secondary  " id="tabela" type="button" value="TABLE" onclick="tabela()">
         <input class="col-md-1 btn btn-secondary offset-md-1 " id="mapa" type="button" value="MAP" onclick="mapa()">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
     </div>
+
+
+
 </div>
 
 <div class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="regions_div" style="width: 80%; height: 80%;"></div>
-<div  class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="tata" style="width: 80%; height: 1000px;">
+
+        <div class="container mb-4" id="tata">
+            <div class="row">
+                <div class="col-12" th:if="${zamapa.size() > 0}">
+                    <div class="table-responsive" style=" overflow-y: auto; height: 1000px">
+                        <table class="table table-striped" style="border-color: deepskyblue; border-top-color: deepskyblue; ">
+                            <thead>
+                            <tr>
+                                <th scope="col">ISO</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Total vaccinations</th>
+                                <th scope="col">Total vaccinated in percentage</th>
+                                <th scope="col">People vaccinated one plus dose</th>
+                                <th scope="col">People vaccinated one plus dose in percentage</th>
+                                <th scope="col">Fully vaccinated</th>
+                                <th scope="col">Fully vaccinated in percentage</th>
+                                <th scope="col">First vaccine date</th>
+                                <th scope="col">Vaccines used</th>
+                                <th scope="col">Number of vaccine types</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="vakcina : ${zamapa}" class="product">
+                                <td th:text="${vakcina.getISO3()}"></td>
+                                <td th:text="${vakcina.getCOUNTRY()}"></td>
+                                <td th:text="${vakcina.getTOTAL_VACCINATIONS()}"></td>
+                                <td th:text="${vakcina.getTOTAL_VACCINATIONS_PER100()}"></td>
+                                <td th:text="${vakcina.getPERSONS_VACCINATED_1PLUS_DOSE()}"></td>
+                                <td th:text="${vakcina.getPERSONS_VACCINATED_1PLUS_DOSE_PER100()}"></td>
+                                <td th:text="${vakcina.getPERSONS_FULLY_VACCINATED()}"></td>
+                                <td th:text="${vakcina.getPERSONS_FULLY_VACCINATED_PER100()}"></td>
+                                <td th:text="${vakcina.getFIRST_VACCINE_DATE()}"></td>
+                                <td th:text="${vakcina.getVACCINES_USED()}"></td>
+                                <td th:text="${vakcina.getNUMBER_VACCINES_TYPES_USED()}"></td>
+                                <td class="text-right">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
 </div>
 
@@ -230,6 +278,7 @@ for(var i=1;i<zaMapaa.length;i++)
     </div>
     <!-- Grid container -->
 </footer>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

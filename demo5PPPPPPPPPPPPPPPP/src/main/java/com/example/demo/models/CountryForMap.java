@@ -46,4 +46,64 @@ public class CountryForMap {
         this.FIRST_VACCINE_DATE = FIRST_VACCINE_DATE;
         this.NUMBER_VACCINES_TYPES_USED = NUMBER_VACCINES_TYPES_USED;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCOUNTRY() {
+        return COUNTRY;
+    }
+
+    public String getISO3() {
+        return ISO3;
+    }
+
+    public String getWHO_REGION() {
+        return WHO_REGION;
+    }
+
+    public String getDATA_SOURCE() {
+        return DATA_SOURCE;
+    }
+
+    public String getDATE_UPDATED() {
+        return DATE_UPDATED;
+    }
+
+    public Long getTOTAL_VACCINATIONS() {
+        return TOTAL_VACCINATIONS;
+    }
+
+    public Long getPERSONS_VACCINATED_1PLUS_DOSE() {
+        return PERSONS_VACCINATED_1PLUS_DOSE;
+    }
+
+    public Long getTOTAL_VACCINATIONS_PER100() {
+        return TOTAL_VACCINATIONS_PER100;
+    }
+
+    public Long getPERSONS_VACCINATED_1PLUS_DOSE_PER100() {
+        return PERSONS_VACCINATED_1PLUS_DOSE_PER100;
+    }
+
+    public Long getPERSONS_FULLY_VACCINATED() {
+        return PERSONS_FULLY_VACCINATED;
+    }
+
+    public Long getPERSONS_FULLY_VACCINATED_PER100() {
+        return PERSONS_FULLY_VACCINATED_PER100;
+    }
+
+    public String getVACCINES_USED() {
+        return VACCINES_USED;
+    }
+
+    public String getFIRST_VACCINE_DATE() {
+        return FIRST_VACCINE_DATE;
+    }
+
+    public Integer getNUMBER_VACCINES_TYPES_USED() {
+        return NUMBER_VACCINES_TYPES_USED;
+    }
 }
