@@ -22,9 +22,17 @@
             font-family: "Roboto";
         }
     </style>
+    <script>
+        function funn() {
+            document.getElementById("tata").style.display = 'none';
+            document.getElementById("regions_div").style.display = 'block';
+            document.getElementById("mapa").disabled = true;
+            document.getElementById("tabela").disabled = false;
+        }
+    </script>
 
 </head>
-<body>
+<body onload="funn();">
 
 <nav style="background: black" class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
@@ -155,16 +163,42 @@ for(var i=1;i<zaMapaa.length;i++)
 <br>
 <br>
 <br>
+
+
+<script>
+
+
+    function tabela() {
+        document.getElementById("regions_div").style.display = 'none';
+        document.getElementById("tata").style.display = 'block';
+        document.getElementById("tabela").disabled=true;
+        document.getElementById("mapa").disabled=false;
+    }
+    function mapa() {
+        document.getElementById("tata").style.display = 'none';
+        document.getElementById("regions_div").style.display = 'block';
+        document.getElementById("mapa").disabled=true;
+        document.getElementById("tabela").disabled=false;
+
+    }
+
+</script>
+
 <div class="container">
-    <div style="font-family: Roboto" class="row my-custom-row  ">
+    <div style="font-family: Roboto" class="row my-custom-row justify-content-center align-items-center">
+        <h1 class="col-md-12 text-center ">Vaccinations</h1>
         <div th:class="col-md-3" class=""><b>Last updated:</b>
             <h5>2022-02-27</h5>
         </div>
+        <div class="col-md-9"></div>
+        <input class="col-md-1  btn btn-secondary  " id="tabela" type="button" value="TABLE" onclick="tabela()">
+        <input class="col-md-1 btn btn-secondary offset-md-1 " id="mapa" type="button" value="MAP" onclick="mapa()">
 
     </div>
 </div>
-<div class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="regions_div" style="width: 80%; height: 80%;"></div>
 
+<div class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="regions_div" style="width: 80%; height: 80%;"></div>
+<div  class="col-md-9 col-lg-12 offset-1 border border-md-primary " id="tata" style="width: 80%; height: 1000px;">
 
 </div>
 

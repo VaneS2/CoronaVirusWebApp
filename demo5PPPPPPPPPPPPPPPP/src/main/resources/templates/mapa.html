@@ -133,14 +133,22 @@
 
   console.log(nemanisto);
   let mymap=""
+  var zum = /*[[${zum}]]*/ "Test";
+  if(zum==1)
+  {
+    zum=5;
+  }
+  else{
+    zum=2.1;
+  }
   if(nemanisto=="2") {
-    mymap = L.map('issMap').setView([myval[0].lat, myval[0].lon], 6);
+    mymap = L.map('issMap').setView([myval[0].lat, myval[0].lon], zum);
   }
 
   if(nemanisto=="1")
   {
     document.getElementById("noEvents").style.display='block';
-    mymap = L.map('issMap').setView([43.22,34.22], 5);
+    mymap = L.map('issMap').setView([43.22,34.22], zum);
   }
 
   const attribution =

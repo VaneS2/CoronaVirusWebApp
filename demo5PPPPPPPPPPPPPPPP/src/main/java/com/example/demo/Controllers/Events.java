@@ -131,6 +131,7 @@ public class Events {
 
 @GetMapping("/search")
     public String pokategorija(Model model, HttpServletRequest request) {
+        model.addAttribute("zum",1);
 
         String datum = request.getParameter("date");
 
