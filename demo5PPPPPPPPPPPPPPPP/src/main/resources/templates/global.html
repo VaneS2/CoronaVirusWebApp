@@ -208,10 +208,11 @@ for(var i=1;i<zaMapaa.length;i++)
             <div class="row">
                 <div class="col-12" th:if="${zamapa.size() > 0}">
                     <div class="table-responsive " style=" overflow-y: auto; height: 900px">
+
                         <table class="table table-striped  " style="border-color: deepskyblue; border-top-color: deepskyblue; ">
                             <thead>
                             <tr>
-                                <th scope="col">ISO</th>
+
                                 <th scope="col">Country</th>
                                 <th scope="col">Total vaccinations</th>
 
@@ -227,7 +228,7 @@ for(var i=1;i<zaMapaa.length;i++)
                             </thead>
                             <tbody>
                             <tr th:each="vakcina : ${zamapa}" class="product">
-                                <td th:text="${vakcina.getISO3()}"></td>
+
                                 <td th:text="${vakcina.getCOUNTRY()}"></td>
                                 <td th:text="${vakcina.getTOTAL_VACCINATIONS()}"></td>
                                 <td th:text="${vakcina.getPERSONS_VACCINATED_1PLUS_DOSE()}"></td>
