@@ -129,6 +129,7 @@
 <script th:inline="javascript">
   var myval = /*[[${nastani}]]*/ "Test";
   var nemanisto = /*[[${nemanisto}]]*/ "Test";
+  var lokk = /*[[${lokk}]]*/ "Test";
   console.log(myval.length)
 
   console.log(nemanisto);
@@ -139,10 +140,18 @@
     zum=5;
   }
   else{
-    zum=2.1;
+    zum=2.5;
   }
   if(nemanisto=="2") {
-    mymap = L.map('issMap').setView([myval[0].lat, myval[0].lon], zum);
+    if(lokk==1)
+    {
+      mymap = L.map('issMap').setView([48.556614,-31.068094], zum);
+    }
+    else
+    {
+      mymap = L.map('issMap').setView([myval[0].lat, myval[0].lon+2], zum);
+    }
+
   }
 
   if(nemanisto=="1")

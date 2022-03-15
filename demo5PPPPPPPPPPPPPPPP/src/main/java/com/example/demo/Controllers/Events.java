@@ -46,6 +46,7 @@ public class Events {
     @GetMapping("/events")
     public String gett(Model model)
     {
+        model.addAttribute("lokk",1);
         String query = "SELECT * \n" +
                 " FROM `gdelt-bq.gdeltv2.ggg` where \n" +
                 " (ContextualText like '%covid%' and ContextualText like '%coronavirus%')and GeoType>1\n" +
