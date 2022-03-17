@@ -345,7 +345,7 @@ public class Cases {
 
 
         try{
-            URL url =new URL("https://disease.sh/v3/covid-19/all");
+            URL url =new URL("https://timskiproekt-corona.azurewebsites.net/vaccines");
             connection2=(HttpURLConnection)url.openConnection();
             connection2.setRequestMethod("GET");
             connection2.setConnectTimeout(5000);
