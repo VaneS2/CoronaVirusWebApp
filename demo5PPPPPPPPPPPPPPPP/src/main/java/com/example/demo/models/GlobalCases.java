@@ -4,20 +4,20 @@ import lombok.Data;
 
 @Data
 public class GlobalCases {
-    Integer updated;
-    Integer cases;
-    Integer todayCases;
-    Integer deaths;
-    Integer todayDeaths;
-    Integer recovered;
-    Integer todayRecovered;
-    Integer active;
-    Integer critical;
-    Integer casesPerOneMillion;
-    Integer deathsPerOneMillion;
-    Integer tests;
+    String updated;
+    String cases;
+    String todayCases;
+    String deaths;
+    String todayDeaths;
+    String recovered;
+    String todayRecovered;
+    String active;
+    String critical;
+    String casesPerOneMillion;
+    String deathsPerOneMillion;
+    String tests;
 
-    public GlobalCases(Integer updated, Integer cases, Integer todayCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer todayRecovered, Integer active, Integer critical, Integer casesPerOneMillion, Integer deathsPerOneMillion, Integer tests) {
+    public GlobalCases(String updated, String cases, String todayCases, String deaths, String todayDeaths, String recovered, String todayRecovered, String active, String critical, String casesPerOneMillion, String deathsPerOneMillion, String tests) {
         this.updated = updated;
         this.cases = cases;
         this.todayCases = todayCases;

@@ -67,12 +67,12 @@ public class RestController {
                     CountryInfo countryInfo= new CountryInfo(
                             day.getString("country"),
                             img,
-                            day.getInt("cases"),
-                            day.getInt("todayCases"),
-                            day.getInt("deaths"),
-                            day.getInt("todayDeaths"),
-                            day.getInt("recovered"),
-                            day.getInt("todayRecovered"),
+                            day.getString("cases"),
+                            day.getString("todayCases"),
+                            day.getString("deaths"),
+                            day.getString("todayDeaths"),
+                            day.getString("recovered"),
+                            day.getString("todayRecovered"),
                             day.getInt("active"),
                             day.getInt("population"),
                             day.getInt("tests")

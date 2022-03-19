@@ -147,9 +147,9 @@ public class Cases {
             JSONObject data= new JSONObject(responseContext2.toString());
 
 
-            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),data.getInt("cases"),
-                    data.getInt("totalCases"),data.getInt("deaths"),data.getInt("todayDeaths"),data.getInt("recovered"),
-                    data.getInt("todayRecovered"),data.getInt("active"),data.getInt("population"),data.getInt("tests"));
+            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),proba(data.getString("cases")),
+                    proba(data.getString("totalCases")),proba(data.getString("deaths")),proba(data.getString("todayDeaths")),proba(data.getString("recovered")),
+                   proba(data.getString("todayRecovered")) ,data.getInt("active"),data.getInt("population"),data.getInt("tests"));
 
                     model.addAttribute("countryInfo",countryInfo);
                     model.addAttribute("pita",data.getInt("cases")+"."+data.getInt("recovered")+"."+data.getInt("active")+"."+data.getInt("deaths"));
@@ -289,10 +289,9 @@ public class Cases {
 
             JSONObject data= new JSONObject(responseContext2.toString());
 
-
-            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),data.getInt("cases"),
-                    data.getInt("totalCases"),data.getInt("deaths"),data.getInt("todayDeaths"),data.getInt("recovered"),
-                    data.getInt("todayRecovered"),data.getInt("active"),data.getInt("population"),data.getInt("tests"));
+            CountryInfo countryInfo=new CountryInfo(data.getString("country"),data.getString("countryImg"),proba(data.getString("cases")),
+                    proba(data.getString("totalCases")),proba(data.getString("deaths")),proba(data.getString("todayDeaths")),proba(data.getString("recovered")),
+                    proba(data.getString("todayRecovered")) ,data.getInt("active"),data.getInt("population"),data.getInt("tests"));
 
 
 
@@ -373,9 +372,11 @@ public class Cases {
             JSONObject global = new JSONObject(responseContext2.toString());
 
 
-            izlez2= new GlobalCases(global.getInt("updated"),global.getInt("cases"),global.getInt("todayCases"),global.getInt("deaths"),global.getInt("todayDeaths")
-                    ,global.getInt("recovered"),global.getInt("todayRecovered"),global.getInt("active"),global.getInt("critical"),global.getInt("casesPerOneMillion"),
-                    global.getInt("deathsPerOneMillion"),global.getInt("tests"));
+            izlez2= new GlobalCases(global.getString("updated"),proba(global.getString("cases")),proba(global.getString("todayCases")),proba(global.getString("deaths")),proba(global.getString("todayDeaths"))
+                    ,proba(global.getString("recovered")),proba(global.getString("todayRecovered")),proba(global.getString("active")),proba(global.getString("critical")),proba(global.getString("casesPerOneMillion")),
+                    proba(global.getString("deathsPerOneMillion")),proba(global.getString("tests")));
+
+           System.out.println(proba(global.getString("cases")));
 
 
             model.addAttribute("vcGlobal",izlez2);
@@ -395,9 +396,11 @@ public class Cases {
         return "global.html";
     }
 
-/*public String proba (String broj){
-        String[] niza=null;
-        niza=broj.split("");
+public String proba (String broj){
+
+
+    String[] niza=null;
+    niza=broj.split("");
 
         String izlez="";
         for(int i=0;i<niza.length;i++)
@@ -414,9 +417,15 @@ public class Cases {
             }
         }
 
-        return izlez;
+String krajno="";
+    for(int j=0;j<izlez.length();j++)
+    {
+        krajno+=izlez.charAt(izlez.length()-1-j);
+    }
 
-}*/
+        return krajno;
+
+}
 
 
 

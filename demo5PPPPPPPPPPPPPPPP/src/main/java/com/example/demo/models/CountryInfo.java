@@ -6,18 +6,19 @@ import lombok.Data;
 public class CountryInfo {
     String country;
     String countryImg;
-    Integer cases;
-    Integer totalCases;
-    Integer deaths;
-    Integer todayDeaths;
-    Integer recovered;
-    Integer todayRecovered;
+    String cases;
+    String totalCases;
+    String deaths;
+    String todayDeaths;
+    String recovered;
+    String todayRecovered;
     Integer active;
     Integer population;
     Integer tests;
 
-    public CountryInfo(String country, String countryImg, Integer cases, Integer totalCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer todayRecovered, Integer active, Integer population, Integer tests) {
+    public CountryInfo(String country, String countryImg, String cases, String totalCases, String deaths, String todayDeaths, String recovered, String todayRecovered, Integer active, Integer population, Integer tests) {
         this.country = country;
+        this.countryImg = countryImg;
         this.cases = cases;
         this.totalCases = totalCases;
         this.deaths = deaths;
@@ -27,7 +28,6 @@ public class CountryInfo {
         this.active = active;
         this.population = population;
         this.tests = tests;
-        this.countryImg=countryImg;
     }
 
     public CountryInfo() {
