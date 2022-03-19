@@ -97,6 +97,8 @@ public class Cases {
 
             model.addAttribute("datumm",java.time.LocalDate.now().toString());
 
+           // System.out.println(proba("152789752"));
+
             model.addAttribute("vaccinePerCountry",vacinePerCountryService.getbyCountry("MACEDONIA"));
 
 
@@ -393,7 +395,28 @@ public class Cases {
         return "global.html";
     }
 
+/*public String proba (String broj){
+        String[] niza=null;
+        niza=broj.split("");
 
+        String izlez="";
+        for(int i=0;i<niza.length;i++)
+        {
+            if(i%3==0)
+            {
+                izlez+=" ";
+                izlez+=niza[niza.length-1-i];
+            }
+            else
+            {
+                izlez+=niza[niza.length-1-i];
+
+            }
+        }
+
+        return izlez;
+
+}*/
 
 
 
