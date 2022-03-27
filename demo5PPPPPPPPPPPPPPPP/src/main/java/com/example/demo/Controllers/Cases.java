@@ -121,7 +121,7 @@ public class Cases {
         BufferedReader reader2;
 
         try{
-            URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja=MACEDONIA");
+            URL url =new URL("https://timskiproekt-corona.azurewebsites.net/restapi?zemja=MACEDONIA");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
@@ -264,11 +264,11 @@ public class Cases {
         BufferedReader reader2;
 
         try{
-            URL url =new URL("https://corona-app-timskiproekt.azurewebsites.net/restapi?zemja="+ zemja);
+            URL url =new URL("https://timskiproekt-corona.azurewebsites.net/restapi?zemja="+ zemja);
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(15000000);
-            connection.setReadTimeout(1500000);
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
             int status=connection.getResponseCode();
             if(status>299){
                 reader2=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
